@@ -166,4 +166,6 @@ GitHubやPCのファイルを自動的に読み込むこともしません。
 
 GitHub Pagesで利用できる無料Webツールとして公開します。
 
-インストールは必要ありません。
+- **公開URL**: https://tk030-lotto.github.io/hikitsuide-miyou-tool/
+
+インストールは必要ありません。ブラウザから直接ご利用いただけます。
