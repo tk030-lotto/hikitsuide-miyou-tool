@@ -1,5 +1,10 @@
 # 引き継いでみよう。ツール 開発記録 (RECORD.md)
 
+## 2026/08/22 12:38 - GitHub Pages 公開準備完了（スタンバイ状態整備）
+- リポジトリ直下の静的配信パス（相対パス構成）の完全性を点検。
+- `README.md` に GitHub Pages 公開予定URL (`https://tk030-lotto.github.io/hikitsuide-miyou-tool/`) を追記し、Gitコミットおよび GitHub (`origin/main`) へプッシュ完了。
+- ユーザー指示に基づき、リポジトリは非公開（Private）のまま「いつでも公開できるスタンバイ状態」を保持。
+
 ## 2026/08/22 12:36 - note・X兼用デモGIF画像（demo.gif）の作成・配置完了
 - Playwrightによる自動操作キャプチャおよびPillowによる最適化処理により、note・X兼用のデモGIFアニメーション（800×600px、約0.46MB）を作成・配置。
 - Step 1〜4の入力からStep 5のプロンプト生成、モード切り替え、微調整、コピー（トースト表示）までの一連の流れを9フレームで網羅。
