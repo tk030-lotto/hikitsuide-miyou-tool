@@ -1,5 +1,12 @@
 # 引き継いでみよう。ツール 開発記録 (RECORD.md)
 
+## 2026/08/26 - F-3 対応完了：knowledge/ フォルダの全プロジェクト自動同期化
+- `sync_rules.ps1` に `knowledge/` フォルダ同期処理を追加し、デスクトップ配下の全プロジェクトへ自動配置する仕組みを構築（全プロジェクト横断対応）。
+- 本プロジェクトへ即時適用済み（`knowledge/protocol.md` 他 6 ファイルの配置を確認）。
+- `knowledge/` フォルダを `.gitignore` に追加（正本はプロジェクト外管理・`sync_rules.ps1` による都度同期方針）。
+- これにより `.clinerules` / `.cursorrules` / `.github/copilot-instructions.md` が参照する `knowledge/protocol.md` へのポインタが有効化。
+- `ISSUE_F3_PROTOCOL_REFERENCE.md` を「対応済み」に更新。
+
 ## 2026/08/26 - コードレビュー指摘事項（F-1, F-2, F-4〜F-14）の修正完了
 - コードレビュー報告書に基づき、F-3（ルール参照先構成）を除く全指摘事項（13件）を修正・検証完了。
   - **F-1**: `showToast` のメッセージ挿入を `textContent` による安全な DOM 構築に変更（潜在 XSS 経路の排除）。

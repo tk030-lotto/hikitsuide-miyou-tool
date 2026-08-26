@@ -3,8 +3,33 @@
 **発見日**: 2026-08-26
 **重要度**: 中（コード動作への影響なし／開発プロセス品質の問題）
 **発生源**: コードレビュー（`CODE_REVIEW_REPORT.md`）
+**ステータス**: ✅ 対応済み（2026-08-26）
 
 ---
+
+## 対応結果
+
+**採用案**: A（同梱・vendoring）を全プロジェクト横断対応として実施
+
+**実施内容**:
+- `C:\Users\tk030\Desktop\各種情報\sync_rules.ps1` に `knowledge/` フォルダ同期処理を追加。
+- 今後は `sync_rules.ps1` 実行により、Desktop 配下の全プロジェクトに `knowledge/*.md` が自動配置される。
+- 本プロジェクトへの即時適用済み（`knowledge/protocol.md` 他 全 `.md` ファイルを配置確認）。
+
+**配置状況（本プロジェクト）**:
+| ファイル | 状態 |
+| :--- | :--- |
+| `knowledge/protocol.md` | ✅ 配置済み |
+| `knowledge/ai-development.md` | ✅ 配置済み |
+| `knowledge/lottery.md` | ✅ 配置済み |
+| `knowledge/business.md` | ✅ 配置済み |
+| `knowledge/quality-audit.md` | ✅ 配置済み |
+| `knowledge/SKILLS.md` | ✅ 配置済み |
+
+**`.gitignore` の扱い**: `knowledge/` はプロトコル正本の個人情報的内容を含むため `.gitignore` へ除外指定済み（ローカルのみ保持・`sync_rules.ps1` が都度同期）。
+
+---
+
 
 ## 1. 現象
 

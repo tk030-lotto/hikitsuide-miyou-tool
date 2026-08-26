@@ -4,6 +4,8 @@ Backup/
 # 一時作業フォルダの除外
 scratch/
 
+# 知識ベース（sync_rules.ps1 で都度配置・正本は 各種情報/knowledge/）
+knowledge/
 # Python関連の一時ファイル・仮想環境
 __pycache__/
 *.py[cod]
