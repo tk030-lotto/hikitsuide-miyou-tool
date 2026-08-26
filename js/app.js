@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentStep = 1;
   let currentMode = 'standard';
   let currentTuning = '';
+  let saveTimeout = null;
   const STORAGE_KEY = 'hikitsugi_tool_draft_v1';
 
   // Init
@@ -56,7 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetInput = getInputByStep(stepNumber);
     if (!targetInput) return;
     const currentVal = targetInput.value.trim();
-    targetInput.value = !currentVal ? text : (!currentVal.includes(text) ? `${currentVal}\n・${text}` : currentVal);
+    
+    if (!currentVal) {
+      targetInput.value = text;
+    } else {
+      const lines = currentVal.split('\n').map(l => l.replace(/^[・\s]+/, '').trim());
+      if (!lines.includes(text)) {
+        targetInput.value = `${currentVal}\n・${text}`;
+      }
+    }
+    
     targetInput.dispatchEvent(new Event('input'));
     targetInput.focus();
     window.UIUtils.showToast(`「${text}」を追加しました`, 'info');
@@ -95,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     [inputProject, inputHistory, inputStatus, inputNext].forEach(input => {
       if (!input) return;
       input.addEventListener('input', () => {
-        saveData();
+        debouncedSaveData();
         updateCharCounters();
       });
     });
@@ -108,8 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        modeTabs.forEach(t => t.classList.remove('active'));
+        modeTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
         tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
         currentMode = tab.dataset.mode || 'standard';
         renderPrompt();
         window.UIUtils.showToast(`表示形式を「${tab.textContent}」に切り替えました`);
@@ -137,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resetBtn) resetBtn.addEventListener('click', handleReset);
 
     document.addEventListener('keydown', (e) => {
+      if (e.isComposing || e.keyCode === 229) return;
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         if (currentStep < 5) {
           goToStep(currentStep + 1);
@@ -161,8 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
     stepItems.forEach(item => {
       const step = parseInt(item.dataset.step, 10);
       item.classList.remove('active', 'completed');
-      if (step === currentStep) item.classList.add('active');
-      else if (step < currentStep) item.classList.add('completed');
+      if (step === currentStep) {
+        item.classList.add('active');
+        item.setAttribute('aria-current', 'step');
+      } else {
+        item.removeAttribute('aria-current');
+        if (step < currentStep) item.classList.add('completed');
+      }
     });
 
     stepContents.forEach(content => {
@@ -205,10 +225,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (inputNext) inputNext.value = '';
       if (tuningInput) tuningInput.value = '';
       currentTuning = '';
-      localStorage.removeItem(STORAGE_KEY);
+      if (saveTimeout) clearTimeout(saveTimeout);
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {
+        console.warn('Failed to clear state in localStorage:', e);
+      }
       goToStep(1);
       window.UIUtils.showToast('入力内容をクリアしました');
     }
+  }
+
+  function debouncedSaveData() {
+    if (saveTimeout) clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+      saveData();
+    }, 300);
   }
 
   function saveData() {
@@ -218,7 +250,11 @@ document.addEventListener('DOMContentLoaded', () => {
       status: inputStatus ? inputStatus.value : '',
       next: inputNext ? inputNext.value : ''
     };
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      console.warn('Failed to save state to localStorage:', e);
+    }
   }
 
   function loadSavedData() {
@@ -230,6 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.history && inputHistory) inputHistory.value = data.history;
       if (data.status && inputStatus) inputStatus.value = data.status;
       if (data.next && inputNext) inputNext.value = data.next;
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Failed to load state from localStorage:', e);
+    }
   }
 });

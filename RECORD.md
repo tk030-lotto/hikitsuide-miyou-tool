@@ -1,5 +1,27 @@
 # 引き継いでみよう。ツール 開発記録 (RECORD.md)
 
+## 2026/08/26 - コードレビュー指摘事項（F-1, F-2, F-4〜F-14）の修正完了
+- コードレビュー報告書に基づき、F-3（ルール参照先構成）を除く全指摘事項（13件）を修正・検証完了。
+  - **F-1**: `showToast` のメッセージ挿入を `textContent` による安全な DOM 構築に変更（潜在 XSS 経路の排除）。
+  - **F-2**: `.gitignore` に `!demo.gif` を追加し、追跡済みデモ GIF の除外事故を防止。
+  - **F-4**: 各種フォーム（textarea）、トースト、タブ、ステップ表示への WAI-ARIA 属性（`aria-label`, `role="status"`, `aria-live="polite"`, `role="tablist"`, `aria-current="step"` 等）の付与および動的連動を実装。
+  - **F-5**: Google Fonts 外部通信を削除し、システムフォントによる完全クライアント完結・オフライン動作化を完了。
+  - **F-6**: `.agents/mcp_config.json` の UTF-8 BOM（`EF BB BF`）を除去。
+  - **F-7**: `index.html` 内のインラインスタイル 4箇所を `css/output.css` の CSS クラスへ移行。
+  - **F-8**: `js/app.js` の `catch` ブロックに `console.warn` による安全なエラーログ出力を追加。
+  - **F-9**: チップ追記時の行単位重複判定ロジック改善および中黒付与フォーマットの統一。
+  - **F-10**: `input` イベントでの localStorage 保存処理に 300ms debounce を導入。
+  - **F-11**: `--text-dim` をコントラスト比 4.5:1 以上を満たす `#94a3b8` に更新（WCAG AA 準拠）。
+  - **F-12**: キーボードショートカット（Ctrl+Enter）に `!e.isComposing`（IME 変換中判定）を追加。
+  - **F-13**: インラインスタイル解消に伴い、適切な CSP（Content Security Policy）メタタグを `index.html` に追加。
+  - **F-14**: 操作ボタンのタイトル・補助等で仕様書（「もう一度作る」）との整合性を追認。
+- 全 JS 構文検証（`node --check`）合格、全ファイル 300 行未満を維持。
+
+## 2026/08/26 - コードレビュー実施および報告書作成
+- 全ソース（HTML/CSS/JS/設定ファイル）の静的解析、`node --check` 構文検証、Git 実機確認を実施。
+- 指摘14件（中5件・低9件）を特定。詳細は `CODE_REVIEW_REPORT.md` を参照。
+- ルール参照不備（`knowledge/protocol.md` 不在）については `ISSUE_F3_PROTOCOL_REFERENCE.md` として分離。
+
 ## 2026/08/22 12:38 - GitHub Pages 公開準備完了（スタンバイ状態整備）
 - リポジトリ直下の静的配信パス（相対パス構成）の完全性を点検。
 - `README.md` に GitHub Pages 公開予定URL (`https://tk030-lotto.github.io/hikitsuide-miyou-tool/`) を追記し、Gitコミットおよび GitHub (`origin/main`) へプッシュ完了。

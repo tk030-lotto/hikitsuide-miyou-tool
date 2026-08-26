@@ -193,6 +193,31 @@
   color: #e4e4e7;
 }
 
+/* Output Step Action Classes */
+.output-title-heading {
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
+
+.btn-apply-tuning {
+  padding: 8px 14px;
+  font-size: 0.8rem;
+}
+
+.step-actions-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-copy-emerald {
+  background: var(--accent-emerald);
+}
+
+.btn-copy-emerald:hover {
+  background: #059669;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .container {
@@ -218,6 +243,12 @@
     flex-direction: column-reverse;
   }
   .step-actions .btn {
+    width: 100%;
+  }
+  .step-actions-group {
+    width: 100%;
+  }
+  .step-actions-group .btn {
     width: 100%;
   }
   .toast-container {
