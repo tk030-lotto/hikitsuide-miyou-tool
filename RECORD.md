@@ -7,6 +7,7 @@
 - `README.md` に Web版（GitHub Pages）のリンクを追記。
 - note記事ファイル（`「引き継いでみよう。」AIを変えても、開発は続けられる.txt`）の見出し直下および末尾に GitHub Pages 公開URL、GitHub リポジトリURL、ハッシュタグを追記。
 - GitHub リポジトリの About 欄（Description、Website、Topics）を設定。
+- note記事ファイルのデスクトップ移動に伴い、リポジトリ内から除外（削除）を反映。
 
 ## 2026/09/01 - ルールファイル同期およびプロジェクト文書の更新
 - `sync_rules.ps1` による最新ルール（`.agents/agents/`、`AI_RULES.md`、`.agents/AGENTS.md` 等）の同期反映。
