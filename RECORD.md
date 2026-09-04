@@ -1,5 +1,11 @@
 # 引き継いでみよう。ツール 開発記録 (RECORD.md)
 
+## 2026/09/04 - リポジトリのパブリック公開および GitHub Pages デプロイ完了
+- ユーザー承認に基づき、リポジトリ `tk030-lotto/hikitsuide-miyou-tool` の可視性をプライベートからパブリック（Public）に変更。
+- GitHub Pages を有効化（`main` ブランチ・ルートディレクトリ `/` を公開元に設定）。
+- 公開サイト（https://tk030-lotto.github.io/hikitsuide-miyou-tool/）の疎通（HTTP 200 OK）およびデプロイ完了を確認。
+- `README.md` に Web版（GitHub Pages）のリンクを追記。
+
 ## 2026/09/01 - ルールファイル同期およびプロジェクト文書の更新
 - `sync_rules.ps1` による最新ルール（`.agents/agents/`、`AI_RULES.md`、`.agents/AGENTS.md` 等）の同期反映。
 - 関連ドキュメントおよび設定ファイルの更新・コミット。

@@ -20,6 +20,8 @@ AIを使って開発していると、
 
 このツールは、現在のプロジェクトを次のAIへ説明するための引き継ぎ文書を作る小さなWebツールです。
 
+🌐 **Web版（GitHub Pages）**: [https://tk030-lotto.github.io/hikitsuide-miyou-tool/](https://tk030-lotto.github.io/hikitsuide-miyou-tool/)
+
 ![デモプレビュー](demo.gif)
 
 ---
