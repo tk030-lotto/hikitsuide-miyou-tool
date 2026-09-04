@@ -2,6 +2,9 @@
 
 # 「引き継いでみよう。」AIを変えても、開発は続けられる
 
+▼ ツールのWeb版（ブラウザですぐ使えます）
+https://tk030-lotto.github.io/hikitsuide-miyou-tool/
+
 AIを使ってソフトウェアを作っていると、こんなことがあります。
 
 > **「別のAIを使ってみたい。」**
@@ -587,5 +590,15 @@ AIを変えたいとき。
 > **「引き継いでみよう。」**
 
 と使ってみてください。
+
+---
+
+▼ Webツールはこちら（インストール不要・ブラウザで動きます）
+https://tk030-lotto.github.io/hikitsuide-miyou-tool/
+
+▼ GitHubリポジトリ（ソースコード・仕様）
+https://github.com/tk030-lotto/hikitsuide-miyou-tool
+
+---
 
 #AI開発 #生成AI #AI開発ツール #個人開発 #AI活用 #ChatGPT #Gemini #Claude #ソフトウェア開発 #開発効率化
