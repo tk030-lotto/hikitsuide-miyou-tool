@@ -47,3 +47,7 @@ GEMINI.md
 debug.log
 *.log
 ISSUE_F3_PROTOCOL_REFERENCE.md
+
+# 開発ドキュメント除外（フェーズ2-B）
+AUDIT_REPORT.md
+CODE_REVIEW_REPORT*.md
