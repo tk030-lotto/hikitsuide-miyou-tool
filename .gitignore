@@ -37,3 +37,13 @@ SKILLS.md
 .agents/
 RECORD.md
 
+
+# 内部運用ファイル（共通ルール）
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+
+# Logs and internal protocol references
+debug.log
+*.log
+ISSUE_F3_PROTOCOL_REFERENCE.md
